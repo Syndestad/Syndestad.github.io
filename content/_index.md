@@ -1,10 +1,10 @@
 ---
-title: "Emily Cooper"
-subtitle: "Social media strategy @ Savoir"
-description: "Not all themes are created equal. With Blogophonic we set out to create a clean theme with the right features for a serious blog. We also wanted Blogophonic to be a pleasure to modify, so we built it with Tachyons, CSS Grid and packed it full of configurable options."
-date: 2019-02-18T12:27:33-06:00
+title: "Synnøve Yndestad"
+subtitle: "The pondering postdoc"
+description: "I am a breast cancer researcher working in a multidisciplinary environment where clinical science, molecular biology, data science and bioinformatic merges. Transitioning from a pure wet lab scientist into the realms of bioinformatics, required me to acquire a whole new skill set, including programming and statistics in R. I made this site to gather some of my how-to notes for future reference. I also hope that others working in translational research new to R may find it useful. Perhaps most importantly, I just wanted to learn how to make a website using R just for fun. This is it."
+date: 2021-06-12 23:33:37 CEST
 images:
-  - img/revoir.jpg
+  - img/poster_tunnel.jpg
 image_left: true
 text_align_left: false
 show_social_links: true # specify social accounts in site config

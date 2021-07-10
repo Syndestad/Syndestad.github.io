@@ -1,10 +1,10 @@
 ---
-title: A Blog That Works
+title: Blog
 description: |
   This is a fully featured blog that supports categories, 
   tags, series, and pagination.
-author: "The R Markdown Team @RStudio"
-show_post_thumbnail: true
+author: "Synnøve Yndestad"
+show_post_thumbnail: false
 show_author_byline: true
 show_post_date: true
 # for listing page layout
@@ -12,16 +12,19 @@ layout: list-sidebar # list, list-sidebar, list-grid
 
 # for list-sidebar layout
 sidebar: 
-  title: A Sidebar for Your Thoughts
+  title: 
   description: |
-    This is a fully featured blog that supports categories,
-    tags, series, and pagination. Even this sidebar offers 
-    a ton of customizations.
     
-    Check out the _index.md file in the /blog folder 
-    to edit this content. 
-  author: "The R Markdown Team @RStudio"
-  text_link_label: Subscribe via RSS
+    Are you a clinical scientist, molecular biologist or similar that have all this data you want to analyze in R but don´t know how? 
+
+    Don´t give up. The beginning is always the hardest.
+
+    I have been there, and on the way I made a lot of notes on "how to".
+    Here I want to transfer my various "how-to" notes for R stats into blog-posts that may be useful for other translational researchers. 
+
+    Other content may appear. 
+  author: "Synnøve Yndestad"
+  text_link_label: 
   text_link_url: /index.xml
   show_sidebar_adunit: false # show ad container
 
