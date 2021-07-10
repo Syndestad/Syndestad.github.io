@@ -126,6 +126,7 @@ enableEmoji = true
     name = "Contact"
     title = "Contact form"
     url = "https://formspree.io/f/mleawezp"
+    method="POST"
     weight = 2
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
