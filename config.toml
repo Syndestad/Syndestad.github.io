@@ -30,7 +30,7 @@ enableEmoji = true
 [params]
   orgName = "Syndestad"
   orgLocal = "Norway"
-  description = "A modern, beautiful, and easily configurable blog theme for Hugo."
+  description = ""
   favicon = "/img/favicon.ico"
   logo = "/img/blogophonic-mark-dark.png"
   mainSections = ["blog", "publications"]
@@ -117,15 +117,15 @@ enableEmoji = true
     weight = 3
     
   # Configure footer  
-  [[menu.footer]]
-    name = "License"
-    title = "License"
-    url = "/license/"
-    weight = 1
+ # [[menu.footer]]
+#    name = "License"
+ #   title = "License"
+  #  url = "/license/"
+   # weight = 1
   [[menu.footer]]
     name = "Contact"
     title = "Contact form"
-    url = "/contact/"
+    url = "https://www.youtube.com/c/MountainSurfer/featured"
     weight = 2
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
