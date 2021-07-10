@@ -125,7 +125,7 @@ enableEmoji = true
   [[menu.footer]]
     name = "Contact"
     title = "Contact form"
-    url = "https://www.youtube.com/c/MountainSurfer/featured"
+    url = "https://formspree.io/f/mleawezp"
     weight = 2
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
