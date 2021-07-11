@@ -85,11 +85,11 @@ enableEmoji = true
       icon      = "instagram" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://www.instagram.com/syndestad_"
-  [[params.social]]
-      icon      = "twitter" # icon name without the 'fa-'
-      icon_pack = "fab"
-      url       = "https://twitter.com/Syndestad_"
-  [[params.social]]
+#  [[params.social]]
+#      icon      = "twitter" # icon name without the 'fa-'
+#      icon_pack = "fab"
+#      url       = "https://twitter.com/Syndestad_"
+#  [[params.social]]
 #      icon      = "rss" # icon name without the 'fa-'
 #      icon_pack = "fas"
 #      url       = "/blog/index.xml"
@@ -119,15 +119,14 @@ enableEmoji = true
   # Configure footer  
  # [[menu.footer]]
 #    name = "License"
- #   title = "License"
-  #  url = "/license/"
+#    title = "License"
+#    url = "/license/"
    # weight = 1
   [[menu.footer]]
     name = "Contact"
     title = "Contact form"
-    url = "https://formspree.io/f/mleawezp"
-    method="POST"
-    weight = 2
+    url = "/contact/" 
+    weight =3
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
 [privacy]
