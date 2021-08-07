@@ -1,0 +1,156 @@
+---
+title: Chi-square in R
+author: Synnøve Yndestad
+date: '2021-08-07'
+slug: []
+categories: ["R", "Statistics", "Clinical science"]
+tags: ["Chi-square","Categoricals","Crosstab", "Non-parametric", "assocplot()", "chisq.test()"]
+---
+
+
+The Chi-square test is used to compare differences between two or more categorical variables. All variables must be ordinal or nominal and summarized as a frequency table. 
+It is a non-parametric test, meaning that it is suitable also for data that is not normally distributed. 
+
+Some of the assumptions for performing a Chi-square test are:
+- Each observation is independent of all the others (one observation per subject), and the categories must be mutually exclusive so that a subject fits into only one of the categories.  I.e Small/Medium/Large, or Mutated/Wild-type.
+- The value of the **expected** count should be >=5 in minimum 80% of the cells, and no cells should have 0 or negative counts.  
+
+For more details, see PMID:[23894860](https://pubmed.ncbi.nlm.nih.gov/23894860/)
+
+
+
+To run a Chi-square test i R, we first need some data. 
+The "esoph" dataset in R´s datasets-package contains data from a case control study of oesophaeal cancer, where records for 88  age-group/alcohol-consumption/tobacco-consumption combinations are listed with the frequency of number of cases (ncases) and number of controls (ncontrols).
+
+Fetch the esoph-dataset, take a look of the data-structure and data.
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+data(esoph)
+head(esoph)
+str(esoph)
+```
+The data structure tells us that the age-group/alcohol-consumption/tobacco-consumption columns are ordered factors with 6, 4 and 4 levels respectively, while the cases and control columns are numerical. 
+
+```{r}
+DT::datatable(esoph, options = list(searching = FALSE))
+```
+
+  
+  
+  
+Some data transformation is necessary. Lets make a frequency table for alcohol consumption. Then we need to group by alcohol consumption level, and summarize cases and controls within each group.
+
+```{r}
+alcohol <- esoph %>% select(c(-"tobgp", -"agegp")) %>%        # Remove unnecessary columns
+                     group_by(alcgp) %>%                      # Group by alcohol consumption levels
+                     mutate(ncases = sum(ncases)) %>%         # Summarize cases of cancer within alcohol consumption level-groups
+                     mutate(ncontrols = sum(ncontrols)) %>%   # Summarize cases of controls within alcohol consumption level-groups
+                     distinct()                               # Remove duplicate values
+alcohol <- as.data.frame(alcohol)
+```
+
+
+Turn the alcgp-column into column names:
+```{r}
+alcgp <- alcohol$alcgp
+row.names(alcohol) <- alcgp
+alcohol <- alcohol[,-1]
+alcohol
+```
+
+```{r}
+DT::datatable(alcohol, options = list(searching = FALSE))
+```
+
+
+
+
+Now, perform the Chi-square test on the frequency table and save test results as "alcoholChi":
+
+```{r}
+alcoholChi <- chisq.test(alcohol)
+alcoholChi
+
+```
+
+The p-value is 2.2e-16, and considered significant. We can therefore assume that there is an association between alcohol consumption and oesophaeal cancer.  
+
+
+If the chi squared test is significant we need to take a look at the residuals to figure out the nature of the association.
+
+Print the observed and expected counts from the test, and the residuals:
+```{r}
+# observed counts 
+alcoholChi$observed  
+# expected counts under the null hypothesis
+alcoholChi$expected  
+# Pearson residuals  (observed - expected) / sqrt(expected).
+alcoholChi$residuals  
+```
+
+When the Pearson residuals is above 2, the cells observed frequency is more than the expected frequency. When the Pearson residuals is less than -2, the cells observed frequency is less than the expected frequency. 
+This enables us to see which cells are contributing for the association, and in which direction (negative or positive).
+
+To visualize associations, we can use the nifty `assocplot()` function. It plots a "Cohen–Friendly association plot and it takes a contingency table as input, and displays the deviations from independence as a bar chart. 
+
+See `??assocplot()` for details. 
+
+assocplot read data as matrix. Therefore, transform the data.frame into matrix inside the call:
+```{r}
+assocplot(as.matrix(alcohol), xlab = "Alcohol consuption", main="Association between alcohol consumption and oesophaeal cancer")
+```
+
+The height of the box represents the contribution of each cell into the total Chi-squared.  
+The area of the box is proportional to the difference in observed and expected frequencies. 
+Thus, a wide and tall box indicates a stronger association.
+
+According to these results, there is a clear association between high alcohol consumption and oesophaeal cancer.
+Does this mean that we should stop drinking wine completely?
+
+According to [Av og til](https://avogtil.no/fakta/en-alkoholenhet/), 1 unit of alcohol is 12g. That is in more commonly known units;  
+- One bottle of beer (33 cl) 4.5 vol %  
+- A small glass of wine (12.5 cl) 12 vol %  
+- A very small glass of liquor (4 cl) 40 vol %   
+
+The association was significant for cases with an alcohol-consumption of more than 80g/day. This equals more than 6 units a day. 6 units is approximately 2.2 L beer, or 83.25 cl wine (i.e more than a bottle (75cl)), or 26.64 cl liquor every day. That amount would be unhealthy also beyond increased cancer risk. So if you enjoy your Friday evening glass, have no worries, as long it is in moderation.
+
+
+## When not to use Chi-square
+
+
+In some cases it is inappropriate to use the Chi-square test.
+
+Using data listed in [table two](https://doi.org/10.1016/j.annonc.2020.11.009) we could try to test if patients that have tumors with HR mutations responds better to treatment than wild-type tumors that is able to repair DNA by HR.  
+
+First, create a 2x2 table from vectors.
+
+```{r}
+HR_mutation <- c(10, 1, 0)  
+Wt <- c(8, 10, 3)
+df = rbind(HR_mutation, Wt)             # Bind vector by rows to a data frame
+colnames(df) <- c("CR+PR", "SD", "PD")  # Add response values as column names
+df                                      # print data frame
+```
+
+
+```{r}
+chisq.test(df)
+```
+
+As we see from the output warning, the Chi-squared approximation may be incorrect. This is because this test is sensitive to sample size. A common rule of thumb is to have no cells with an expected count of zero, 5 or more in all cells in 2x2 tables or that 80% of cells have more than 5 in larger tables. 
+In this case a Fisher test (after transforming the data to a 2x2 table) is more appropriate due to small sample size, or a test for trends in proportions, as the values are ordinal.
+  
+  
+When the number of categories for each variable becomes very large (more than 20) it becomes difficult to interpret the results.
+Also, when the sample size is very large (>500) any small difference can produce significant results causing [Type 1 errors](https://en.wikipedia.org/wiki/Type_I_and_type_II_errors) or false positives. Just because a difference is significant, the difference may be so small that it is biologically irrelevant. So interpret your results with care.
+
+
+
+
+
+

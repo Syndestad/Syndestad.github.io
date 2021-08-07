@@ -3,12 +3,9 @@ title: Fisher-Exact in R
 subtitle: "A short guide on performing the Fisher-Exact test and Summarizing a 2x2 table of categorical values."
 author: Synnøve Yndestad
 date: '2021-07-10'
-slug: []
-categories:
-  - R
-  - Statistics
-  - Clinical science
-tags: []
+#slug: []
+categories: ["R", "Statistics", "Clinical science"]
+tags: ["Categoricals", "Non-parametric", "fisher.test()", "Crosstab", "2x2-table"]
 ---
 
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>

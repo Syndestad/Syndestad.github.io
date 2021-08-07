@@ -1,7 +1,7 @@
 ---
 title: Publications
 author: Synnøve Yndestad
-date: '2021-06-13'
+date: '2021-07-10'
 slug: []
 categories: []
 tags: []

@@ -115,18 +115,29 @@ enableEmoji = true
     title = "Publications"
     url = "/publications/"
     weight = 3
+#  [[menu.header]]
+#    name = "Categoriers"
+#    title = "Categories"
+#    url = "/categories/"
+#    weight = 4
+
     
-  # Configure footer  
- # [[menu.footer]]
+# Configure footer  
+# [[menu.footer]]
 #    name = "License"
 #    title = "License"
 #    url = "/license/"
    # weight = 1
+   [[menu.footer]]
+    name = "Categories"
+    title = "Categories"
+    url = "/categories/"
+    weight = 1
   [[menu.footer]]
-    name = "Contact"
-    title = "Contact form"
-    url = "/contact/" 
-    weight =3
+    name = "Tags"
+    title = "Tags"
+    url = "/tags/" 
+    weight =2
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
 [privacy]
