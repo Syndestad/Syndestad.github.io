@@ -2,7 +2,7 @@
 title: Contact
 name: Contact Us Form
 description: "If you want to contact me, send me a message here."
-date: 2019-02-25T13:38:41-06:00
+date: '2021-08-07'
 draft: false
 url: contact
 type: form
