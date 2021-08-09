@@ -22,7 +22,7 @@ The test for trends in proportions is also known as the Cochran Armitage test. I
 
 
 
-Using data listed in [table two](https://doi.org/10.1016/j.annonc.2020.11.009) we will test if patients with breast cancer responds better to Olaparib treatment if the tumor has a mutation in a [HR gene](https://en.wikipedia.org/wiki/Homologous_recombination).  
+Using data listed in [table two](https://doi.org/10.1016/j.annonc.2020.11.009) we will test if there is a trend over response in patients with breast cancer treated with Olaparib if the tumor has a mutation in a [HR gene](https://en.wikipedia.org/wiki/Homologous_recombination).  
 Response is our ordinal value where "CR+PR" represent a tumor shrinkage of 30-100% (Complete or Partial Response), "SD" (Stable disease) represent a shrinkage of less than 30% to 20% increace, while "PD" (Progressive disease) is an increace of more than 20%. Mutational status is our nominal value with the values HR-mutated or Wild-type
 
 
@@ -66,15 +66,13 @@ n
 
 
 
-Run the test with:  
+Run the test with the base R function:  
 
 prop.trend.test(x, n, score = seq_along(x))  
   
 With the arguments:  
 x = Number of events.   Count data, the HR_mutation or Wt vector.
-
 n	= Number of trials.   The total number of participants pr ordinal level in trial, the colSum.
-
 score	= Group score.    The level and order of the ordinal value. Default value is c(1,2,3, ..etc).  
 `Seq_along(x)` as score will assign score = 1, 2, 3 etc to end of vector. Using this function we assume that the data is entered in an ordered fashion from small to large.
 
@@ -93,7 +91,7 @@ prop.trend.test(HR_mutation, n, score = seq_along(HR_mutation))
 ## X-squared = 7.4455, df = 1, p-value = 0.00636
 ```
 
-Either vector provide the same result, since their proportion will be the same:
+Either vector from the table will provide the same result, since their proportion will be the same:
 
 ```r
 prop.trend.test(Wt, n, score = seq_along(Wt))
@@ -108,14 +106,14 @@ prop.trend.test(Wt, n, score = seq_along(Wt))
 ## X-squared = 7.4455, df = 1, p-value = 0.00636
 ```
 
-As we can see, the p value is smaller than 0.05, and 
+As we can see, the p value is smaller than 0.05, and we can conclude that there is a trend in the proportions of HR-mutated tumors over response.
 
 
 
 If you want an online calculator solution, epitools has an excellent online calculator [here](https://epitools.ausvet.com.au/trend):  
 https://epitools.ausvet.com.au/trend
 
-Sample of epitools online calculator output or the example abowe can be viewed [here](https://syndestad.netlify.app/shadow/2021-08-09-epitools-proportional-trend-test).
+A Sample-output of epitools online calculator of the example above are provided below: 
 
 ![epitools online calculator output](images/Epitools-Chi-squared-test-for-trend.jpeg)
 
