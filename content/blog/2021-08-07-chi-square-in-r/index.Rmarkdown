@@ -127,7 +127,7 @@ In some cases it is inappropriate to use the Chi-square test.
 
 Using data listed in [table two](https://doi.org/10.1016/j.annonc.2020.11.009) we could try to test if patients that have tumors with HR mutations responds better to treatment than wild-type tumors that is able to repair DNA by HR.  
 
-First, create a 2x2 table from vectors.
+First, create a contingancy table from vectors.
 
 ```{r}
 HR_mutation <- c(10, 1, 0)  
