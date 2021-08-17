@@ -14,11 +14,9 @@ layout: single
 
 
 
-The test for trends in proportions is also known as the Cochran Armitage test. It performs Chi-squared test for trend in proportions and is used to test whether there is a difference between groups considering the size of the groups. It takes count data from contingency tables where you have one nominal variable with two levels (i.e "Mutated", "Wild-type") and the other variable is an ordinal value with minimum 3 values where the variables is naturally ranked (i.e "Low-exposure" < "Medium-exposure" < "High-exposure"). The null hypothesis is that there is no trend.
-
-
-
-
+The test for trends in proportions is also known as the Cochran Armitage test. It performs Chi-squared test for trend in proportions and is used to test whether there is a difference between groups considering the size of the groups. It takes count data from contingency tables where you have one nominal variable with two levels (i.e "Mutated", "Wild-type") and the other variable is an ordinal value with minimum 3 values where the variables is naturally ranked  
+(i.e "Low-exposure" < "Medium-exposure" < "High-exposure").  
+The null hypothesis is that there is no trend.
 
 
 
@@ -36,7 +34,6 @@ colnames(df) <- c("CR+PR", "SD", "PD")  # Add response values as column names
 df                                      # print data frame
 ```
 
-
 Count all cases in the table as a sanity check, and summarize the column values with `colSums()` and save the count as n.
 ```{r}
 sum(df)               # Total count
@@ -46,15 +43,22 @@ n
 
 
 
+
+
+## Running the test
+
 Run the test with the base R function:  
 
 prop.trend.test(x, n, score = seq_along(x))  
   
 With the arguments:  
-x = Number of events.   Count data, the HR_mutation or Wt vector.
-n	= Number of trials.   The total number of participants pr ordinal level in trial, the colSum.
-score	= Group score.    The level and order of the ordinal value. Default value is c(1,2,3, ..etc).  
-`Seq_along(x)` as score will assign score = 1, 2, 3 etc to end of vector. Using this function we assume that the data is entered in an ordered fashion from small to large.
+
+x = Number of events.         #Count data, the HR_mutation or Wt vector.  
+  
+n	= Number of trials.         #The total number of participants pr ordinal level in trial, the colSum.  
+  
+score	= Group score.          #The level and order of the ordinal value. Default value is c(1,2,3, ..etc).    
+`Seq_along(x)` as score will assign score = 1, 2, 3 etc to end of vector. Using this function we assume that the data is entered in an ordered fashion from small to large.  
 
 
 ```{r}
@@ -71,10 +75,48 @@ As we can see, the p value is smaller than 0.05, and we can conclude that there 
 
 
 
+
+
+
+## Summarize categoricals to table
+
+If you have the data in a data frame and need to count the categorical first, you can summarize into a table by the `table()` function:
+
+```{r}
+# Make a summary table from vectors
+Response <- c("CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","CR+PR","SD","SD","SD","SD","SD","SD","SD","SD","SD","SD","SD","PD","PD","PD")
+Variable <- c("HR", "Wt", "HR", "Wt", "HR","HR", "HR", "HR", "Wt", "Wt","HR", "Wt", "Wt", "Wt", "HR", "Wt", "HR", "HR", "Wt", "Wt", "Wt", "Wt", "Wt", "Wt", "HR", "Wt", "Wt", "Wt", "Wt", "Wt", "Wt", "Wt")
+
+# Vectors to dataframe, coerse strings to factors, i.e make them "countable"   
+Data = data.frame(Variable,Response, stringsAsFactors = TRUE) 
+# Specify factor ordering
+levels(Data$Response)
+
+# Re-order factor level to correct order:
+Data$Response = factor(Data$Response,levels(Data$Response)[c(1,3,2)])
+# Check if they are in correct order
+levels(Data$Response)
+
+# Make a summary table of the variables you want
+MyTable = table(Data$Variable, Data$Response)
+MyTable
+
+
+#  Select row by name and unlist().  subset ["ByRow", "ByColumn]
+HR_mutation =  unlist(MyTable["HR",])
+Wt =       unlist(MyTable["Wt",])
+sum(MyTable)
+n= colSums(MyTable)
+n
+```
+
+
+## Onlie calculator
+
 If you want an online calculator solution, epitools has an excellent online calculator [here](https://epitools.ausvet.com.au/trend):  
 https://epitools.ausvet.com.au/trend
 
-A Sample-output of epitools online calculator of the example above are provided below: 
+A Sample-output of the epitools online calculator for the example above is provided below: 
 
 ![epitools online calculator output](images/Epitools-Chi-squared-test-for-trend.jpeg)
 
