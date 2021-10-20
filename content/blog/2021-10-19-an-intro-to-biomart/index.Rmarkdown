@@ -1,0 +1,262 @@
+---
+title: An intro to biomaRt
+author: Synnøve Yndestad
+date: '2021-10-19'
+slug: []
+categories: ["R", "Bioinformatics", "sequencing"]
+tags: ["biomaRt", "gene annotation", "gene ontology", "dbSNP", "ClinVar", "ensembl", "entrez", "hgnc", "database query"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Or "How to annotate Hugo Symbol and Entrez ID to ensembl ID, fetch the location of the genes and associated gene ontologies and dbSNPs using biomaRt".  
+biomaRt is a Bioconductor package that provides an R interface to the HGNC BioMart server. It makes it possible to access and query a large amount of data and resources from ensembl. We can use that for gene annotation and database mining across multiple species.  
+   
+Genes and transcripts are named in a variety of ways, which can be quite confusing and a source of errors.  
+The ensembl identifiers is based on the NCBI RefSeq set and is stable. They are consistent and unambiguous across releases. Gene names on the other hand may change based on new knowledge or preferences, but the stable identifiers will remain the same. 
+Working with ensembl format id´s is therefore more reproducible and consistent over time, but we will need to translate those to more human recognizable format like hugo symbol (HGNC) gene names at the end stage of the data processing. Many bioinformatic tools also requires entrez id, i.e various subtyping tools. This means that translating between ensembl id, hugo symbol and entrez id is something that we need to do quite frequently, and depending on your workflow.  
+
+
+
+## Code in brief
+
+Just show me the code, no explanation needed:
+```{r}
+library(biomaRt)
+ensembl <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")
+
+Values <- c("ENSG00000142208", "ENSG00000132781", "ENSG00000139618", "ENSG00000012048", "ENSG00000121879", "ENSG00000073050","ENSG00000181555", "ENSG00000141510")
+
+MyGenes <- getBM(attributes = c("ensembl_gene_id", "hgnc_symbol", "entrezgene_id"), 
+                 filters = "ensembl_gene_id",
+                 values = Values,
+                 mart = ensembl)
+MyGenes
+```
+
+
+
+
+
+## Getting started; Select database and dataset
+
+
+
+
+Install from bioconductor for R Version 4.1:
+
+```{r, eval = FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("biomaRt")
+```
+
+
+Load package and list the available BioMart databases.
+
+```{r, message=FALSE}
+library(biomaRt)
+library(tidyverse)
+
+# List the available BioMart databases 
+listMarts()
+```
+We want the ensembl BioMart, useMart to select and save it as mart.
+
+```{r}
+# Pick the ensembl database and save it
+mart <- useMart("ensembl")
+mart
+```
+
+
+Each database contains several datasets.  
+Have a look:
+```{r}
+head(listDatasets(mart))
+```
+
+Search for the Human dataset
+```{r}
+listDatasets(mart) %>% filter(grepl("Human", description))
+```
+This tells us that the current version of the Human genes is GRCh38.p13.  
+Make a note of the version used and the date you downloaded the dataset. If an older version for some reason is required, it is possible to make a query especially for the version you need.  
+  
+Now, select the Homo Sapiens dataset.
+```{r}
+# Select your dataset
+ensembl <- useDataset("hsapiens_gene_ensembl", mart)
+ensembl
+```
+
+
+## Build the query
+
+To build your query, we use values, attributes, filters and which mart.
+
+Filters = The kind of value you have, and want to search against (i.e "ensembl_gene_id")  
+Attributes = The stuff you want to get, i.e hugo symbols, entrez id´s etc.  
+Values = The input values to annotate (Specific id`s, like "ENSG00000132781)  
+
+Get the available filters and attributes with listFilters() and listAttributes() and store them in your environment for easier inspection.
+```{r listAttributes}
+# Fetch available filters
+filters <- listFilters(ensembl)
+head(filters)
+
+# Fetch available attributes
+attributes <- listAttributes(ensembl)
+head(attributes)
+
+```
+In the attributes, we find the all the attributes we can use in the query; "ensembl_gene_id", "hgnc_symbol" and "entrezgene_id"
+
+To get the entrez id and hgnc symbol for **all** ensembl id´s, we don´t need any values. We can just call getBM() with the attributes we want:
+
+```{r}
+All.ensembl.ids <- getBM(attributes = c("ensembl_gene_id", "hgnc_symbol", "entrezgene_id"), mart = ensembl)
+head(All.ensembl.ids)
+# Print the number of rows
+nrow(All.ensembl.ids)
+```
+
+This may be saved as a key for future reference and consistent workflows. Take note of the chromosome version used and the date it was downloaded for future references.
+
+```{r, eval = FALSE}
+write_csv(All.ensembl.ids, "Ensembl_hgnc_entrez_key_GRCh38p13_191021.csv")
+```
+
+
+All the genes are more than we need for most purposes. In stead, we build a query containing only our genes of interest. 
+Now, take the ensembl id´s that you want to annotate into a vector to use in the getBM() query as values, and set "ensembl_gene_id" as filters to specify that your values are of the type "ensembl_gene_id".
+
+```{r}
+GenesOfInterest <- c("ENSG00000142208", "ENSG00000132781", "ENSG00000139618", "ENSG00000012048", "ENSG00000121879", "ENSG00000073050","ENSG00000181555", "ENSG00000141510")
+
+MyGenes <- getBM(attributes = c("ensembl_gene_id", "hgnc_symbol", "entrezgene_id"), 
+                 filters = "ensembl_gene_id",
+                 values = GenesOfInterest,
+                 mart = ensembl)
+DT::datatable(MyGenes)
+```
+
+
+Similarly, we can fetch where our genes of interests are located by chromosome, start position, end position and band. We use the Values vector as before, but now we don´t include the ensembl_gene_id or the entrez_id in the output (the attributes to list) since we don´t need that in this output:  
+```{r}
+Location <- getBM(attributes = c("hgnc_symbol", "chromosome_name", 'start_position', 'end_position', 'band'), 
+                 filters = "ensembl_gene_id",
+                 values = GenesOfInterest,
+                 mart = ensembl)
+DT::datatable(Location)
+```
+
+Then we can answer things like, which genes are the shortest/longest
+```{r}
+DT::datatable(Location %>% mutate(Length = end_position-start_position) %>% 
+                           arrange(Length))
+```
+
+
+
+
+
+## Search for GO terms
+
+Now we want to see if any of our genes of interest are associated with a particular DNA repair pathway. Then we can fetch the genes associated with the GO terms for Base Excision Repair, Double Strand Break, MisMatch Repair and Single Strand Break repair.
+
+BER: GO:0006284  
+DSB: GO:0006302  
+MMR: GO:0006298  
+SSB: GO:0000012  
+
+```{r}
+BER.Genes <- getBM(attributes= c("hgnc_symbol"),
+                   filters=c("go"),
+                   values = "GO:0006284",
+                   mart=ensembl)
+DSB.Genes <- getBM(attributes= c("hgnc_symbol"),
+                   filters=c("go"),
+                   values = "GO:0006302",
+                   mart=ensembl)
+MMR.Genes <- getBM(attributes= c("hgnc_symbol"),
+                   filters=c("go"),
+                   values = "GO:0006298",
+                   mart=ensembl)
+SSB.genes <- getBM(attributes= c("hgnc_symbol"),
+                   filters=c("go"),
+                   values = "GO:0000012",
+                   mart=ensembl)
+```
+
+Merge the results:
+```{r}
+BER.Genes$BER <- "BER"
+DSB.Genes$DSB <- "DSB"
+MMR.Genes$MMR <- "MMR"
+SSB.genes$SSB <- "SSB"
+
+RepairGenes <- BER.Genes %>% full_join(DSB.Genes) %>% 
+                             full_join(MMR.Genes) %>% 
+                             full_join(SSB.genes)  
+# Add annotation to MyResults
+MyGenes <- MyGenes %>% left_join(RepairGenes)
+DT::datatable(MyGenes)
+```
+
+
+## Fetch dbSNP from biomaRt
+
+We can fetch variants from dbSNP, but then we need to query a different mart, the "snp" mart.
+
+`snpmart = useEnsembl(biomart = "snp", dataset="hsapiens_snp")`
+
+
+```{r}
+table(attributes$page)
+```
+
+To find what attributes we can use in the query, we can search in the snp attributes for the ensembl mart we created in the beginning.
+```{r}
+attributes %>% filter(page == "snp")
+```
+
+
+
+So, to get all the known snp´s for MUTYH, we can use the chromosome location in the query above to select the snp´s to extract. We specify in the filters and values the location to list SNPs from. So we specify the location og MUTYH by chromosome name, start position and end position.  
+  
+From the Location table above:  
+MUTYH,	1,	45329163,	45340893  
+
+Get all known variants in MUTYH and print the variants that is listed as pathogenic in clinical_significance.
+```{r}
+# Load the snp mart:
+snpmart = useEnsembl(biomart = "snp", dataset="hsapiens_snp")
+
+
+MUTYH_snp <-getBM(attributes = c('refsnp_id','allele','chrom_start',"clinical_significance",
+                                 "minor_allele_freq","validated"), 
+                     filters = c('chr_name','start','end'), 
+                      values = list(1,	45329163,	45340893), 
+                        mart = snpmart)
+
+DT::datatable(MUTYH_snp %>% filter(grepl("pathogenic", clinical_significance)))
+```
+
+
+
+Other things you can do with biomaRt is to retrieve gene sequences, coding regions, 5'UTR regions, transcripts, protein sequence etc using the getSequence() function.
+
+
+For more details on how to query in biomaRt see the excellent [vignette](https://bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/accessing_ensembl.html) or [reference manual](https://bioconductor.org/packages/release/bioc/html/biomaRt.html).
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@ subtitle: 'Or; "How to Calculate %GC content from a fasta.file"                 
 author: Synnøve Yndestad
 date: '2021-08-17'
 slug: []
-categories: ["R", "python", "sequencing"]
+categories: ["R", "python", "sequencing", "Bioinformatics"]
 tags: ["DNA", "programming", "fasta"]
 ---
 
