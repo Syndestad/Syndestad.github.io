@@ -1,6 +1,6 @@
 ---
 title: Dragen QC report template for multiple samples from fastqc metrics
-author: R package build
+author: Synnøve Yndestad
 date: '2022-02-14'
 slug: []
 categories:
@@ -14,6 +14,8 @@ tags:
   - tidyverse
   - Rmarkdown
   - Plotly
+  - MultiQC
+  - fastQC
 subtitle: ''
 excerpt: 'A Rmarkdown report generator for Dragen fastqc metrics'
 ---
