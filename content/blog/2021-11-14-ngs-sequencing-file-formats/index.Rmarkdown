@@ -72,7 +72,40 @@ FASTQ files are text files, and thus readable from the terminal. They contain a 
 
 To interpret the quality score, see [Illumina help pages](https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScoreEncoding_swBS.htm).
 
-Paired end reads are stored in two seperate files.
+Paired end reads are stored in two separate files.
+
+This means, that to count the number of reads in a FASTQ file from the terminal is quite straight forward. Just count the number of lines in the file, and divide by 4.
+
+Count lines with wc -l:
+
+```{bash, eval = FALSE}
+myFile.fastq wc -l
+```
+
+
+Now include some calculations. Count lines and divide by 4
+```{bash, eval = FALSE}
+echo $(cat myFile.fastq |wc -l)/4|bc
+```
+
+
+Most likely, the file is compressed to save space, then the file has a .gz extension. Then you need to add an unzip command.
+
+In **Linux**, the zcat command allows us to view a compressed file without uncompressing and changing the source file.  
+
+Uncompress, count lines and divide by 4: 
+```{bash, eval = FALSE}
+ echo $(zcat myFile.fastq.gz|wc -l)/4|bc
+```
+
+In **MacOS** zcat appends a .Z to the output file, which creates a "can't stat" error. So, when on a Mac I use gunzip with the -c command to uncompress the file to stdout without changing the original file. Using only gunzip without the -c will delete the original file.  
+  
+Uncompress, count lines and divide by 4: 
+```{bash, eval = FALSE}
+echo $(gunzip -c myFile.fastq.gz|wc -l)/4|bc
+```
+
+The output is the number of reads in the FASTQ file.
 
 
 ### Viewing FASTQ files with ShortRead in R
