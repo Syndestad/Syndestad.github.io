@@ -1,0 +1,180 @@
+---
+title: Calculate Z-Score and plot heatmaps
+author: Synnøve Yndestad
+date: '2022-06-29'
+slug: []
+categories:
+  - R
+  - RNAseq
+  - Statistics
+  - Visualizations
+tags:
+  - z-score
+  - heatmap
+  - scale
+  - gene expression
+excerpt: 'Z-score is a measure for how values deviates from the mean in a given population. Calculating z-score is a handy way to standardize, or normalize data. This kind of normalization is frequently used in gene expression studies to visualize heat maps of differential expressed genes. '
+---
+
+
+
+## Z-score 
+
+Z-score is a measure for how values deviates from the mean in a given population.  
+A value with z-score = 0 is the average value in the data. Negative values is below average, and positive is above.  
+The formlua for calculating z-score is:  
+
+z-score = (x-μ)/σ  
+
+x = one observation in the population  
+μ = the mean of the population  
+σ = the standard deviation of the population  
+  
+Calculating this in R can be done by:
+```{r, message = FALSE}
+library(tidyverse)
+# Enter some data and calculate z-score
+data <- c(1,5,9,12,14,23)
+
+z_scores <- (data-mean(data))/sd(data)
+z_scores
+```
+
+The final number 23 is 1.6 standard deviations away from the mean.
+```{r}
+mean(data)
+```
+
+Visualize how far above or below average the values are:
+```{r}
+par(mfrow=c(1,2))
+plot(data, type="b", ylab = "data value")
+plot(z_scores, type="b", col="black", ylab = "z score")
+abline(h = 0, col = "brown", lty = 4)
+```
+
+Calculating z-score is a handy way to standardize, or normalize data.  
+This is frequently used in gene expression studies to visualize heat maps of differential expressed genes.
+The DE analysis is performed on normalized counts before log2 and Z-score transformation. 
+
+
+In R, scale() can be used for z-score transformation of large matrices. 
+
+Compared with manual Z-score calculation, we get identical results when using scale().
+```{r}
+# Manually calculated z-score
+z_scores
+# z-score using scale()
+scale(data) %>% as.vector()
+```
+
+Scaling is part of a normalization approach to be able to compare variance between samples.  
+**scale() is performed column-wise.**  
+In a matrix of gene expression data, the matrix must be transposed before and after z-score transformation if you want to compare gene expression between samples.  
+This will scale the expression of each gene compared to the mean of the expression in the population.
+Doing scale on the columns will compare the expression of the gene compared to the other genes **within the sample**. 
+
+For genes in columns and samples in rows, use:
+```{r, eval = FALSE}
+scale(data)
+```
+
+For genes in rows and samples in columns, use:
+```{r, eval = FALSE}
+t(scale(t(data)))
+```
+
+
+
+## Z-Score normalization with gene expression data:
+
+
+Here is a demonstration of z-score normalization using gene expression from the airway dataset. The airway data set is available on Bioconductor.  
+
+Get the airway dataset  
+```{r, message = FALSE}
+library(airway)
+data(airway)
+airway
+```
+
+Extract the count matrix
+```{r}
+airway.matrix = assay(airway)
+# matrix dimension before removing low count genes
+dim(airway.matrix)
+```
+
+By removing low count genes, the mean variance can be estimated more reliable.  
+Therefore, genes with 0 counts should be removed for some applications. 
+```{r}
+# Remove genes with 0 counts
+# Sett genes to keep, all genes that are not expressed to be removed
+keep <- rowSums(airway.matrix) > 1
+airway.matrix <- airway.matrix[keep,]
+# Check dimensions
+dim(airway.matrix)
+```
+
+Do log2 transform the count matrix to get normal distributed data before scaling and calculate z-score:  
+```{r}
+scale(log2(airway.matrix+1)) %>% head()
+```
+
+
+## Plotting heatmap 
+
+Plotting heatmap with and without log2 normalization, and also plotting when scaling with and without transposing the matrix is a nice visual demonstration of what happens to the data during z-score scaling.
+
+Observe the difference in the heatmap when plotting the data with and without log2 normalization, and scaling with and without transposing the matrix.
+
+```{r}
+# Get metadata for heatmap
+metadata = as.data.frame(colData(airway))
+# Extract genes with highest variance
+topVarGenes <- order(-rowVars(assay(airway)))[0:50]
+mat <- assay(airway)[ topVarGenes, ]
+# The count matrix has samples in columns, and genes in rows
+mat %>% head()
+```
+
+Plot the heatmap using `pheatmap()` of un-normalized raw counts:   
+```{r, fig.height=8}
+pheatmap::pheatmap(mat, 
+                   annotation = select(metadata, cell, dex), 
+                                       main = "Raw counts")
+```
+
+Plot a heatmap with the data log2 transformed to get data that are normal distributed:
+```{r, fig.height=8}
+pheatmap::pheatmap(log2(mat+1), 
+                   annotation = select(metadata, cell, dex),
+                    main = "Log2 transformed counts, no scaling")
+```
+
+Plot a heatmap with the data log2 transformed, but scaling is performed column wise:  
+```{r, fig.height=8}
+pheatmap::pheatmap(scale(log2(mat+1)), 
+                   annotation = select(metadata, cell, dex),
+                   main = "Log2 transformed with column wise scaling; \n Gene expression scaled for all genes within sample")
+```
+
+Plot a heatmap with the data log2 transformed, and properly scaled row-wise:  
+```{r, fig.height=8}
+pheatmap::pheatmap(t(scale(t(log2(mat+1)))), 
+                   annotation = select(metadata, cell, dex),
+                   main = "Log2 transformed with row wise scaling; \n Individual gene expression scaled between samples")
+```
+
+The last heatmap show the difference in gene expression between samples, while the second last show the difference of gene expression within each sample. So it is important to do the scaling in the desired direction.  
+
+
+
+
+
+
+
+
+
+
+
