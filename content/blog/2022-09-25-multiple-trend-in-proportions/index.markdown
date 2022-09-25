@@ -1,6 +1,6 @@
 ---
 title: For-loop for Multiple Trend in Proportions
-author: R package build
+author: Synnøve Yndestad
 date: '2022-09-25'
 slug: []
 categories:
@@ -64,12 +64,12 @@ head(df)
     ## # A tibble: 6 × 5
     ##   Subject Response Biomarker1 Biomarker2 Biomarker3
     ##   <chr>   <fct>    <fct>      <fct>      <fct>     
-    ## 1 A       SD       Low        High       Wt        
-    ## 2 B       PR       High       High       Mutated   
-    ## 3 C       PD       Low        Low        Mutated   
-    ## 4 D       CR       High       High       Wt        
-    ## 5 E       CR       High       High       Wt        
-    ## 6 F       SD       Low        Low        Wt
+    ## 1 A       CR       High       High       Mutated   
+    ## 2 B       PD       Low        High       Wt        
+    ## 3 C       SD       Low        High       Wt        
+    ## 4 D       PR       High       High       Mutated   
+    ## 5 E       CR       Low        Low        Mutated   
+    ## 6 F       PD       High       High       Wt
 
 Your dependent variable, in this case “Response”, need to be in correct order for the prop.trend.test(). We want CR=1, PR=2, SD=3 and PD=4.
 Verify that the levels are in correct order with `levels()`, and adjust with `factor()` if it needs to be corrected.
@@ -122,12 +122,12 @@ head(IndependentVariable)
     ## # A tibble: 6 × 3
     ##   Biomarker1 Biomarker2 Biomarker3
     ##   <fct>      <fct>      <fct>     
-    ## 1 Low        High       Wt        
-    ## 2 High       High       Mutated   
-    ## 3 Low        Low        Mutated   
-    ## 4 High       High       Wt        
-    ## 5 High       High       Wt        
-    ## 6 Low        Low        Wt
+    ## 1 High       High       Mutated   
+    ## 2 Low        High       Wt        
+    ## 3 Low        High       Wt        
+    ## 4 High       High       Mutated   
+    ## 5 Low        Low        Mutated   
+    ## 6 High       High       Wt
 
 ## The for-loop
 
@@ -188,25 +188,25 @@ print(output)
     ## [1] "Biomarker Nr1"
     ##       DependentVariable
     ##        CR PR SD PD
-    ##   High  4  2  2  2
-    ##   Low   1  2  4  3
+    ##   High  1  3  5  3
+    ##   Low   3  1  3  1
     ## 
     ##  Chi-squared Test for Trend in Proportions
     ## 
     ## data:  tbl[1, ] out of n ,
     ##  using scores: 1 2 3 4
-    ## X-squared = 1.9639, df = 1, p-value = 0.1611
+    ## X-squared = 1.5705, df = 1, p-value = 0.2101
     ## 
     ## # A tibble: 2 × 5
     ##   DependentVariable IndependentVariable `X-squared` p.value method              
     ##   <chr>             <chr>                     <dbl>   <dbl> <chr>               
-    ## 1 Response          Biomarker Nr1              1.96   0.161 Chi-squared Test fo…
+    ## 1 Response          Biomarker Nr1              1.57   0.210 Chi-squared Test fo…
     ## 2 <NA>              <NA>                      NA     NA     <NA>                
     ##      DependentVariable IndependentVariable Condition CR PR SD PD X-squared
-    ## High          Response       Biomarker Nr1      High  4  2  2  2  1.963928
-    ## Low               <NA>                <NA>       Low  1  2  4  3        NA
+    ## High          Response       Biomarker Nr1      High  1  3  5  3  1.570513
+    ## Low               <NA>                <NA>       Low  3  1  3  1        NA
     ##        p.value                                    method
-    ## High 0.1610939 Chi-squared Test for Trend in Proportions
+    ## High 0.2101326 Chi-squared Test for Trend in Proportions
     ## Low         NA                                      <NA>
 
     ## Warning in write.table(output, file = outputFile, sep = ",", row.names =
@@ -215,49 +215,49 @@ print(output)
     ## [1] "Biomarker Nr2"
     ##       DependentVariable
     ##        CR PR SD PD
-    ##   High  5  4  4  1
-    ##   Low   0  0  2  4
+    ##   High  2  2  5  2
+    ##   Low   2  2  3  2
     ## 
     ##  Chi-squared Test for Trend in Proportions
     ## 
     ## data:  tbl[1, ] out of n ,
     ##  using scores: 1 2 3 4
-    ## X-squared = 8.5676, df = 1, p-value = 0.003422
-    ## 
-    ## # A tibble: 2 × 5
-    ##   DependentVariable IndependentVariable `X-squared`  p.value method             
-    ##   <chr>             <chr>                     <dbl>    <dbl> <chr>              
-    ## 1 Response          Biomarker Nr2              8.57  0.00342 Chi-squared Test f…
-    ## 2 <NA>              <NA>                      NA    NA       <NA>               
-    ##      DependentVariable IndependentVariable Condition CR PR SD PD X-squared
-    ## High          Response       Biomarker Nr2      High  5  4  4  1  8.567611
-    ## Low               <NA>                <NA>       Low  0  0  2  4        NA
-    ##          p.value                                    method
-    ## High 0.003421958 Chi-squared Test for Trend in Proportions
-    ## Low           NA                                      <NA>
-    ## [1] "Biomarker Nr3"
-    ##          DependentVariable
-    ##           CR PR SD PD
-    ##   Wt       4  2  5  2
-    ##   Mutated  1  2  1  3
-    ## 
-    ##  Chi-squared Test for Trend in Proportions
-    ## 
-    ## data:  tbl[1, ] out of n ,
-    ##  using scores: 1 2 3 4
-    ## X-squared = 0.81438, df = 1, p-value = 0.3668
+    ## X-squared = 0.03108, df = 1, p-value = 0.8601
     ## 
     ## # A tibble: 2 × 5
     ##   DependentVariable IndependentVariable `X-squared` p.value method              
     ##   <chr>             <chr>                     <dbl>   <dbl> <chr>               
-    ## 1 Response          Biomarker Nr3             0.814   0.367 Chi-squared Test fo…
-    ## 2 <NA>              <NA>                     NA      NA     <NA>                
+    ## 1 Response          Biomarker Nr2            0.0311   0.860 Chi-squared Test fo…
+    ## 2 <NA>              <NA>                    NA       NA     <NA>                
+    ##      DependentVariable IndependentVariable Condition CR PR SD PD  X-squared
+    ## High          Response       Biomarker Nr2      High  2  2  5  2 0.03108003
+    ## Low               <NA>                <NA>       Low  2  2  3  2         NA
+    ##       p.value                                    method
+    ## High 0.860062 Chi-squared Test for Trend in Proportions
+    ## Low        NA                                      <NA>
+    ## [1] "Biomarker Nr3"
+    ##          DependentVariable
+    ##           CR PR SD PD
+    ##   Wt       1  2  5  4
+    ##   Mutated  3  2  3  0
+    ## 
+    ##  Chi-squared Test for Trend in Proportions
+    ## 
+    ## data:  tbl[1, ] out of n ,
+    ##  using scores: 1 2 3 4
+    ## X-squared = 4.6154, df = 1, p-value = 0.03169
+    ## 
+    ## # A tibble: 2 × 5
+    ##   DependentVariable IndependentVariable `X-squared` p.value method              
+    ##   <chr>             <chr>                     <dbl>   <dbl> <chr>               
+    ## 1 Response          Biomarker Nr3              4.62  0.0317 Chi-squared Test fo…
+    ## 2 <NA>              <NA>                      NA    NA      <NA>                
     ##         DependentVariable IndependentVariable Condition CR PR SD PD X-squared
-    ## Wt               Response       Biomarker Nr3        Wt  4  2  5  2  0.814376
-    ## Mutated              <NA>                <NA>   Mutated  1  2  1  3        NA
-    ##           p.value                                    method
-    ## Wt      0.3668296 Chi-squared Test for Trend in Proportions
-    ## Mutated        NA                                      <NA>
+    ## Wt               Response       Biomarker Nr3        Wt  1  2  5  4  4.615385
+    ## Mutated              <NA>                <NA>   Mutated  3  2  3  0        NA
+    ##            p.value                                    method
+    ## Wt      0.03168639 Chi-squared Test for Trend in Proportions
+    ## Mutated         NA                                      <NA>
 
 Now we can look at the result by importing the outputFile with `read_csv()`
 
@@ -275,7 +275,7 @@ datatable(TheOutput,
 ```
 
 <div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","vertical":false,"data":[["Response",null,"Response",null,"Response",null],["Biomarker Nr1",null,"Biomarker Nr2",null,"Biomarker Nr3",null],["High","Low","High","Low","Wt","Mutated"],[4,1,5,0,4,1],[2,2,4,0,2,2],[2,4,4,2,5,1],[2,3,1,4,2,3],[1.96392785571143,null,8.56761141330279,null,0.814376004756768,null],[0.161093863614048,null,0.00342195796400831,null,0.366829638165771,null],["Chi-squared Test for Trend in Proportions",null,"Chi-squared Test for Trend in Proportions",null,"Chi-squared Test for Trend in Proportions",null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>DependentVariable<\/th>\n      <th>IndependentVariable<\/th>\n      <th>Condition<\/th>\n      <th>CR<\/th>\n      <th>PR<\/th>\n      <th>SD<\/th>\n      <th>PD<\/th>\n      <th>X-squared<\/th>\n      <th>p.value<\/th>\n      <th>method<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"columnDefs":[{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,5,6,7,8]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","vertical":false,"data":[["Response",null,"Response",null,"Response",null],["Biomarker Nr1",null,"Biomarker Nr2",null,"Biomarker Nr3",null],["High","Low","High","Low","Wt","Mutated"],[1,3,2,2,1,3],[3,1,2,2,2,2],[5,3,5,3,5,3],[3,1,2,2,4,0],[1.57051282051282,null,0.0310800310800308,null,4.61538461538461,null],[0.210132555374333,null,0.860061958100425,null,0.0316863885397939,null],["Chi-squared Test for Trend in Proportions",null,"Chi-squared Test for Trend in Proportions",null,"Chi-squared Test for Trend in Proportions",null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>DependentVariable<\/th>\n      <th>IndependentVariable<\/th>\n      <th>Condition<\/th>\n      <th>CR<\/th>\n      <th>PR<\/th>\n      <th>SD<\/th>\n      <th>PD<\/th>\n      <th>X-squared<\/th>\n      <th>p.value<\/th>\n      <th>method<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"columnDefs":[{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,4,5,6,7,8]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 
 Optionally, save the final results as an excel file.
 
