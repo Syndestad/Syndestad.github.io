@@ -15,7 +15,6 @@ tags:
   - for-loop
   - write.xlsx()
 subtitle: ''
-draft: yes
 series: ~
 layout: single
 excerpt: 'When you have only one parameter to test, following my previous tutorial for test for trends in proportions will be sufficient. However, if you have many independent variables to be tested across several dependent variables, it may become quite tedious to do them all one by one. Therefore, I wrote a for-loop that will create all the summary-tables, perform the test for trends in proportions for each table, add the test result to the count matrix and save the output neatly in a csv/excel format. Here I explain each step in the process.'
