@@ -1,0 +1,7 @@
+DependentVariable,IndependentVariable,Condition,CR,PR,SD,PD,X-squared,p.value,method
+Response,Biomarker Nr1,High,4,2,2,2,1.96392785571143,0.161093863614048,Chi-squared Test for Trend in Proportions
+NA,NA,Low,1,2,4,3,NA,NA,NA
+Response,Biomarker Nr2,High,5,4,4,1,8.56761141330279,0.00342195796400831,Chi-squared Test for Trend in Proportions
+NA,NA,Low,0,0,2,4,NA,NA,NA
+Response,Biomarker Nr3,Wt,4,2,5,2,0.814376004756768,0.366829638165771,Chi-squared Test for Trend in Proportions
+NA,NA,Mutated,1,2,1,3,NA,NA,NA
