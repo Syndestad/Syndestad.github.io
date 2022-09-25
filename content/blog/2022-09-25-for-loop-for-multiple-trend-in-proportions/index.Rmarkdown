@@ -98,7 +98,7 @@ Now, run the for-loop that calculates test for trends in proportion for each var
 
 ```{r, echo = FALSE}
 # Hidden filepath for webpage purposes
-outputFile = "/Users/syndestad/Documents/Syndestad.github.io/content/blog/2022-09-25-multiple-trend-in-proportions/output/MyResults_TestForTrendInProportions.csv"
+outputFile = "/Users/syndestad/Documents/Syndestad.github.io/content/blog/2022-09-25-for-loop-for-multiple-trend-in-proportions/output/MyResults_TestForTrendInProportions.csv"
 ```
 
 
