@@ -5,3 +5,9 @@ Response,Biomarker Nr2,High,2,2,5,2,0.0310800310800308,0.860061958100425,Chi-squ
 NA,NA,Low,2,2,3,2,NA,NA,NA
 Response,Biomarker Nr3,Wt,1,2,5,4,4.61538461538461,0.0316863885397939,Chi-squared Test for Trend in Proportions
 NA,NA,Mutated,3,2,3,0,NA,NA,NA
+Response,Biomarker Nr1,High,1,3,4,3,0.00841750841750849,0.926899069788613,Chi-squared Test for Trend in Proportions
+NA,NA,Low,1,3,2,3,NA,NA,NA
+Response,Biomarker Nr2,High,2,2,5,4,0.0824175824175821,0.774047523697564,Chi-squared Test for Trend in Proportions
+NA,NA,Low,0,4,1,2,NA,NA,NA
+Response,Biomarker Nr3,Wt,1,4,3,3,0.134680134680134,0.713628027472914,Chi-squared Test for Trend in Proportions
+NA,NA,Mutated,1,2,3,3,NA,NA,NA
