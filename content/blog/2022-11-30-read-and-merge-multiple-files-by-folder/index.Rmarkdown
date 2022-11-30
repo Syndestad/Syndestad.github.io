@@ -1,0 +1,321 @@
+---
+title: Read and merge multiple files by folder
+author: R package build
+date: '2022-11-30'
+slug: []
+categories:
+  - R
+  - RNAseq
+  - sequencing
+  - data vrangeling
+tags:
+  - fs::dir_map()
+  - fs::dir_ls
+  - VCF
+  - function
+  - gene expression
+  - regex
+  - tidyverse
+  - vcfR
+subtitle: ''
+excerpt: 'Often the data we need is spread out across multiple files, and we need a way to read all the files and merge the content.The goal is to generate a tidy data frame.Tidy data have variables in columns and observations in rows. Here I demonstrate how to gather data from multiple files into a tidy dataset from; 1- A folder with one file pr measurement.  2- A folder where you have one file pr sample with multiple measurements.  3- A folder using regex to select specific files.   4- Show off some superpowers by applying this in creating a function to merge a folder of VCF files into one long data frame.  '
+draft: no
+series: ~
+layout: single
+---
+
+
+## Reading multiple files by folder
+
+Often the data we need is spread out across multiple files, and we need a way to read all the files and merge the content.   
+The goal is to generate a tidy data frame.  
+Tidy data have variables in columns and observations in rows. Here I demonstrate how to gather data from multiple files into a tidy dataset from;   
+1- A folder with one file pr measurement.  
+2- A folder where you have one file pr sample with multiple measurements.  
+3- A folder using regex to select specific files.   
+4- Show off some superpowers by applying this in creating a function to merge a folder of VCF files into one long data frame.  
+
+
+Files used in this "How to" can be downloded from here:  
+https://github.com/Syndestad/Learning-curve
+
+
+Load the necessary libraries:  
+```{r, message=FALSE}
+library(tidyverse)
+library(fs)
+library(here)
+```
+
+The fs package provides a cross-platform, uniform interface to file system operations. It is very useful when working with file-paths.
+The here package is very useful for setting your file path relative to here::here().
+Setting a relative path to here::here() will make your code transportable, and everything will work even of you move the script file to another location or computer. 
+
+Where are we?
+```{r}
+here::here()
+```
+
+
+## 1- A folder with one file pr measurement
+
+We have a folder of files that has samples in rows, and observations in columns with the following structure:  
+![](img/OneFilePrMesurement.png)
+
+```{r, message = FALSE}
+Bcells_ave <- read_csv("OneFilePrMeasurement/Bcells.ave.csv")
+head(Bcells_ave)
+```
+In stead of reading in files one by one, we can use fs::dir_map(). 
+  
+>dir_map(path, function)  
+  
+dir_map(), applies a function to each entry in the path and returns the result in a list.  
+Set the file path by naming the folder in your working directory where your data is, and pasting it to here::here()
+Select appropriate function for file type, i.e use read_csv for csv files, readxl::read_excel() for excel files.   
+Then, if your data contains a key that is identical in each file such as "SampleId", you can merge the list of files by calling full_join within Reduce.
+
+
+```{r, message = FALSE}
+# Set the name of the folder to read in your working directory.
+MyFolder = "/content/blog/2022-11-30-read-and-merge-multiple-files-by-folder/OneFilePrMeasurement"
+
+here::here()
+
+# Read files
+ListOfFiles = fs::dir_map( paste0(here::here(), MyFolder), read_csv)
+# Merge
+MergedFiles = Reduce(full_join,ListOfFiles)
+```
+
+TADAAAA!  
+Yes, it really is that simple.  
+
+The list of files:  
+![](img/ListOfFiles.png)
+The merged data frame:  
+
+```{r}
+MergedFiles %>% knitr::kable()
+```
+
+
+
+**Note:**  
+as.data.frame(ListOfFiles) works surprisingly well too, but does not merge by key.
+```{r}
+as.data.frame(ListOfFiles)  %>% knitr::kable()
+```
+
+## 2- One file pr sample with multiple measurements
+
+When you have one file pr sample and need to keep track of the file name as sample name, we can use fs::dir_ls().  
+dir_ls() is equivalent to the ls command. It returns filenames as a named fs_path character vector. 
+
+Consider the following file structure:  
+![](img/OnefileprSample.png)
+
+```{r, message = FALSE}
+read_csv("OneFilePrSample/Sample1_FACET_TumorPurityPloidy.csv")
+```
+
+
+
+To read and merge all files in the folder, list all paths in the folder with dir_ls().  
+```{r}
+MyFolder = "OneFilePrSample"
+
+files = fs::dir_ls(MyFolder)
+files
+```
+
+Read as a large data frame using an appropriate function.  
+Use read_csv for csv files, read_xls for excel files etc.  
+Set name of file with th ".id" argument.  
+```{r, message=FALSE}
+allFiles = files %>% map_df(read_csv, .id = "filename")
+allFiles %>% knitr::kable()
+```
+And we have successfully merged the files to a tidy data frame.  
+The Sample names may need some editing.
+
+Remove file path and file-extension from sample name, and the merged data frame is ready:  
+```{r}
+# Add Sample ID column
+allFiles$SampleID = allFiles$filename
+# reorder columns
+allFiles = allFiles %>% select(filename, SampleID, everything())
+# Remove folder name
+allFiles$SampleID <- str_remove(allFiles$SampleID, paste0(MyFolder, "/"))
+# Remove all after "_"
+allFiles$SampleID <- gsub("_.*","",allFiles$SampleID)
+
+head(allFiles) %>% knitr::kable()
+```
+
+The merged data frame with the added and cleaned sample names are ready!  
+
+
+## 3- Read multiple files based on regexp, create count matrix from RNAseq 
+
+Often, you have a mix of files in a folder. Here, we have RNAseq output by transcript (.quant.sf) and gene (.quant.genes.sf) all in the same folder. To make a count matrix for downstream analysis we only want to read the files including genes, the "quant.genes.sf" file extension and not the transcript with the "quant.sf" extension.  
+Then we can use regular expressions (regex) in the read call to select only the files that we want.
+
+More on regular expressions here:  
+https://www.rexegg.com/regex-quickstart.html
+
+
+![](img/OneFilePrSample2.png)
+
+
+The goal is to read only the "quant.genes.sf" files in the folder and make a count matrix.  
+  
+List all paths in the folder that has a file name that ends with ".genes.sf" by using "*" in the regexp argument:  
+
+/Users/syndestad/Documents/Syndestad.github.io/content/blog/2022-11-30-read-and-merge-multiple-files-by-folder/
+```{r}
+MyFolder = "/content/blog/2022-11-30-read-and-merge-multiple-files-by-folder/OneFilePrSample2/"
+# List filepaths of files containig a spesific expression
+files = fs::dir_ls(paste0(here::here(), MyFolder), regexp = "*.genes.sf")
+files
+```
+
+Read as a large data frame using an appropriate function i.e read.table for tabular data, 
+read_csv for csv files, read_xls for excel files.   
+Add name of file with the ".id" function.  
+```{r}
+allFiles = files %>% map_df(read.table, .id = "SampleID", header = TRUE)
+head(allFiles) %>% knitr::kable()
+```
+
+Now we have all the files in a Very Long format.  
+Clean up the sample names by removing file-path and file-extension from sample name.   
+```{r}
+# Remove filepath
+allFiles$SampleID <- str_remove(allFiles$SampleID, paste0(here::here(), MyFolder))
+# Remove file-extension
+allFiles$SampleID <- str_remove(allFiles$SampleID, ".quant.genes.sf")
+head(allFiles, n= 15) %>% knitr::kable()
+```
+
+For the count matrix, we don't need the "Length" or "EffectiveLength" columns.   
+Select columns to keep by using select().  
+Here, we want to use NumReads in the count matrix.  
+Pivot wider to create a count matrix with sample names in columns, and ENSEMBL ID (Name) as rows.  
+```{r}
+CountDF <- allFiles %>% select(SampleID, Name, NumReads) %>% 
+                             pivot_wider(names_from = SampleID, 
+                                         values_from = NumReads) %>% 
+                             as.data.frame()
+# Set rownames
+MyRownames = CountDF$Name
+rownames(CountDF) = MyRownames
+# Remove names column and print matrix 
+MyMatrix = CountDF[, -1] %>% as.matrix()
+MyMatrix %>% knitr::kable()
+```
+
+TADAAAA!  
+There is your count matrix ready to analyze!  
+ 
+
+
+
+
+## 4- Read and merge VCF files
+
+Now that we have become a file-reading and merging wizard, lets try something more complex.
+Lets make a function that will read the FIX part of a VCF file, and use that when reading all the vcf files in a folder.
+
+The Variant Call Format (VCF) stores the location and type of variant deviating from the reference genome.
+
+The header starts with # and contains various metadata i.e what reference genome was used. The body has 8 mandatory columns, but can contain multiple others as well. We are only interested in the body, aka the FIX part in this exersice.    
+
+vcfR is an R package for working with vcf files, see details at:  
+https://knausb.github.io/vcfR_documentation/index.html
+
+
+Load packages
+
+```{r, message = FALSE}
+library(tidyverse)
+library(fs)
+library(here)
+library(vcfR)
+```
+
+We start with a folder containing a mix of files, vcf and the annotated csv file.  
+
+![](img/seq_files.png)
+
+
+List all paths in the folder containing "*.vcf" to select only the .vcf files.  
+
+```{r}
+MyFolder = "/content/blog/2022-11-30-read-and-merge-multiple-files-by-folder/seq_files"
+
+files = fs::dir_ls(paste0(here::here(), MyFolder),
+                   regexp = "*.vcf")
+files
+```
+
+
+Read as a large data frame using an appropriate function. 
+But now, we have to MAKE the function to use.  
+
+
+We can read a vcf file with read.vcfR() and then use getFIX() to get the fixed/body info.  
+If we pipe them together, we get:  
+```{r}
+read.vcfR("seq_files/BT20_S8.vcf", verbose = FALSE ) %>% 
+          getFIX(getINFO = TRUE) %>% as.data.frame() %>% 
+                                     DT::datatable()
+```
+
+Make it into a function:  
+```{r}
+getVCFfix <- function (vcfFile) {
+            read.vcfR(vcfFile, verbose = FALSE ) %>% 
+            getFIX(getINFO = TRUE) %>% as.data.frame()
+}
+
+```
+
+
+Read all vcf files in the selected folder as a large data frame with the generated function **getVCFfix()**.  
+Add the file-path-name with the ".id" argument so we keep track of which sample the data originates from.  
+```{r}
+## Read the FIX part of all vcf files in the folder using the generated function **getVCFfix** 
+allFiles = files %>% map_df(getVCFfix, .id = "SampleID")
+
+# Clean up Sample ID, remove path names
+allFiles$SampleID <- str_remove(allFiles$SampleID, paste0(here::here(), MyFolder, "/"))
+
+# Remove everything after "_":
+allFiles$SampleID <- sub("_[^_]+$", "", allFiles$SampleID)
+allFiles %>% DT::datatable()
+```
+
+Tadaaa!  
+Now we have a Very Long data frame with all the FIX info from a folder of vcf files, with a column specifying SampleID.  
+Sweet!  
+
+```{r}
+# count all variants from each sample
+table(allFiles$SampleID)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

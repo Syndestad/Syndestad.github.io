@@ -1,7 +1,11 @@
 ---
 title: "Synnøve Yndestad"
-subtitle: "The pondering postdoc"
-description: "I am a breast cancer researcher working in a multidisciplinary environment where clinical science, molecular biology, data science and bioinformatic merges. Transitioning from a pure wet lab scientist into the realms of bioinformatics, required me to acquire a whole new skill set, including programming and statistics in R. I made this site to gather some of my how-to notes for future reference. I also hope that others working in translational research new to R may find it useful. Perhaps most importantly, I just wanted to learn how to make a website using R just for fun. This is it."
+subtitle: "I just needed the data, I wasn't supposed to be doing this."
+description: "This is probably the quote that best describes how I ended up here. 
+<br>
+In the quest for getting 'the data' we do what it takes. Learn R, dive into statistics, data wrangling, sequencing formats, bash scripting, more statistics. Over time, 'Getting the data' always takes on different forms, because biology is messy and research questions evolves.
+The upside is that I enjoy learning new methods. I also started to really enjoy working in R,  after the steep 'learning the basics' was done. 
+So here I am, with a blog written in R about how to do stuff in R."
 date: 2021-06-12 23:33:37 CEST
 images:
   - img/poster_tunnel.jpg
