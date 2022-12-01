@@ -1,7 +1,7 @@
 baseURL = "https://syndestad.netlify.app"
 theme = "hugo-apero"
 languageCode = "en"
-title = "The Pondering Postdoc"
+title = "I just needed the data, I wasn't supposed to be doing this."
 author = "Synnøve Yndestad"
 copyright = "" # set to override the auto generated copyright using org info and now year
 googleAnalytics = ""

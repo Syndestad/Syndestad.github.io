@@ -1,7 +1,7 @@
 ---
 ## Configure sidebar content in narrow column
 author: "Synnøve Yndestad"
-role: "The pondering postdoc"
+role: "I just needed the data, I wasn't supposed to be doing this."
 avatar_shape: square # circle, square, rounded
 show_social_links: true # specify social accounts in site config
 show_audio_link: false
