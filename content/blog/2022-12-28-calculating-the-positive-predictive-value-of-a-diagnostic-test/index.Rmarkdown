@@ -15,7 +15,7 @@ tags:
   - accuracy
   - confusionMatrix()
 subtitle: ''
-excerpt: 'Will a diagnostic test have the same predictive value regardless of how it is used? My intuitive answer is "It should", but hey, this is why we do statistics before implementing large screening programs. The predictive value of a test is different when it is used in a high-risk than when it is used in a low-risk population. It is also different if the test is used as a screening test versus when it is used as a confirmatory test, or used in two populations with different prevalence. Sensitivity, specificity and accuracy are very important principles to consider when evaluating how and when diagnostic tests should be used, such as the mammography screening program, or when evaluating the differences in policies regarding COVID testing during the early and late stages of the pandemic.'
+excerpt: 'Will a diagnostic test have the same predictive value regardless of how it is used? My intuitive answer is "It should", but hey, this is why we do statistics before implementing large screening programs. The predictive value of a test is different when the test is used in a high-risk population compared to when it is used in a low-risk population. This means that the positive predictive value of a test differs if the test is used as a screening test versus when it is used as a confirmatory test, or used in two populations with different prevalence. Sensitivity, specificity and accuracy are important principles to consider when evaluating how and when diagnostic tests should be used, such as the mammography screening program, or when evaluating the differences in policies regarding COVID testing during the early and late stages of the pandemic.'
 draft: no
 series: ~
 layout: single
@@ -23,7 +23,7 @@ layout: single
 
 
 
-Will a diagnostic test have the same predictive value regardless of how it is used? My intuitive answer is "It should", but hey, this is why we do statistics before implementing large screening programs. The predictive value of a test is different when it is used in a high-risk than when it is used in a low-risk population. It is also different if the test is used as a screening test versus when it is used as a confirmatory test, or used in two populations with different prevalence. Sensitivity, specificity and accuracy are very important principles to consider when evaluating how and when diagnostic tests should be used, such as the mammography screening program, or when evaluating the differences in policies regarding COVID testing during the early and late stages of the pandemic.
+Will a diagnostic test have the same predictive value regardless of how it is used? My intuitive answer is "It should", but hey, this is why we do statistics before implementing large screening programs. The predictive value of a test is different when the test is used in a high-risk population compared to when it is used in a low-risk population. This means that the positive predictive value of a test differs if the test is used as a screening test versus when it is used as a confirmatory test, or used in two populations with different prevalence. Sensitivity, specificity and accuracy are important principles to consider when evaluating how and when diagnostic tests should be used, such as the mammography screening program, or when evaluating the differences in policies regarding COVID testing during the early and late stages of the pandemic.
 
 ## Some definitions:
 
@@ -31,13 +31,13 @@ Will a diagnostic test have the same predictive value regardless of how it is us
 
 For a test to have a reliable predictive value, we want the number of false positives and the number of false negatives to be as low as possible. Both can have serious implications, where a missed diagnosis might cause a patient to go untreated for a cancer that could have been curable. While a false positive result may give rise to unnecessary treatment with unnecessary side effectes, anxiety and stress.
 
-The Null hypothesis is that there is no real effect. False positive (α) occurs when we incorrectly reject the null hypothesis, while a false negative (β) is incorrectly accepting the null hypothesis.
+The Null Hypothesis assumes that there is no effect/difference.  
+Incorrectly rejecting the null hypothesis results in a False Positive (α).  
+Incorrectly accepting the null hypothesis results in a false negative (β) .
 
 **Some definitions:**
 
-Pr = probability
-
-We can calculate 
+Pr = probability  
 
 Sensitivity = Pr(positive test \| disease)\
 Specificity = pr(negative test \| no disease)\
