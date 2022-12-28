@@ -162,7 +162,7 @@ Now the positive predictive value is a lot higher, around 92%. Note that the sen
 
 This principle applies to i.e the mammography screening program that does not screen the entire female population, but only the age group or people with a family history that makes them more high risk. It also applies to changes in policies around COVID testing of the general population vs only the people with symptoms during the different stages of the pandemic with a high/low prevalence of disease.
 
-## Using R to calculate positive predictive value
+## Using R to calculate positive predictive value.
 
 We can use the **caret** R package to calculate everything calculated manually above by using the `confusionMatrix()` function. If we also use the **broom** package, we can get the test results as tidy tibbles.
 

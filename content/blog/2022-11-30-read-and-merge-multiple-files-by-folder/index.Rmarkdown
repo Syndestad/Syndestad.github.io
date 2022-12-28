@@ -39,7 +39,7 @@ Tidy data have variables in columns and observations in rows. Here I demonstrate
 Files used in this "How to" can be downloded from here:  
 https://github.com/Syndestad/Learning-curve
 
-
+  
 Load the necessary libraries:  
 ```{r, message=FALSE}
 library(tidyverse)
