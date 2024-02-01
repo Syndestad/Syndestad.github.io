@@ -9,7 +9,7 @@ disqusShortname = ""
 metaDataFormat = "yaml"
 footnoteReturnLinkContents = "&#8617;" # ↩
 # set deliberately low for testing choose your prefered number based on the blog layout you've chosen
-paginate = 5
+paginate = 30
 preserveTaxonomyNames = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 enableEmoji = true
@@ -73,6 +73,11 @@ enableEmoji = true
   # Icon pack "fab" includes brand icons, see: https://fontawesome.com/icons?d=gallery&s=brands&m=free
   # Icon pack "fas" includes solid icons, see: https://fontawesome.com/icons?d=gallery&s=solid&m=free
   # Icon pack "far" includes regular icons, see: https://fontawesome.com/icons?d=gallery&s=regular&m=free
+ 
+   [[params.social]]
+      icon      = "twitter" # icon name without the 'fa-'
+      icon_pack = "fab"
+      url       = "https://twitter.com/Syndestad_"
   [[params.social]]
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
@@ -85,10 +90,7 @@ enableEmoji = true
       icon      = "instagram" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://www.instagram.com/syndestad_"
-#  [[params.social]]
-#      icon      = "twitter" # icon name without the 'fa-'
-#      icon_pack = "fab"
-#      url       = "https://twitter.com/Syndestad_"
+
 #  [[params.social]]
 #      icon      = "rss" # icon name without the 'fa-'
 #      icon_pack = "fas"
@@ -115,8 +117,8 @@ enableEmoji = true
     title = "About"
     url = "/about/"
     weight = 3
-#  [[menu.header]]
-#    name = "Categoriers"
+ #[[menu.header]]
+#    name = "Categories"
 #    title = "Categories"
 #    url = "/categories/"
 #    weight = 4

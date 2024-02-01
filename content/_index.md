@@ -1,16 +1,15 @@
 ---
 title: "Synnøve Yndestad"
 subtitle: "I just needed the data, I wasn't supposed to be doing this."
-description: "This is probably the quote that best describes how I ended up here. 
-<br>
-In the quest for getting 'the data' we do what it takes. Learn R, dive into statistics, data wrangling, sequencing formats, bash scripting, more statistics. Over time, 'Getting the data' always takes on different forms, because biology is messy and research questions evolves.
-The upside is that I enjoy learning new methods. I also started to really enjoy working in R,  after the steep 'learning the basics' was done. 
-So here I am, with a blog written in R about how to do stuff in R."
+description: "This collage represent some of the methods and techniques I have used over the years.
+    They are all from my lab-journals and 'How-to' notes.
+    Some of these 'how-to' notes becomes blog-posts.   
+    Hope you will find them useful. "
 date: 2021-06-12 23:33:37 CEST
 images:
-  - img/poster_tunnel.jpg
-image_left: true
-text_align_left: false
+  - img/BannerSquared.png
+image_left: false
+text_align_left: true
 show_social_links: true # specify social accounts in site config
 show_action_link: true
 action_link: /blog

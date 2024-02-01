@@ -51,20 +51,20 @@ data("penguins")
 
 ```
 ## # A tibble: 333 × 8
-##    species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
-##    <fct>   <fct>              <dbl>         <dbl>      <int>   <int> <fct> <int>
-##  1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
-##  2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
-##  3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
-##  4 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
-##  5 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
-##  6 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
-##  7 Adelie  Torgersen           39.2          19.6        195    4675 male   2007
-##  8 Adelie  Torgersen           41.1          17.6        182    3200 fema…  2007
-##  9 Adelie  Torgersen           38.6          21.2        191    3800 male   2007
-## 10 Adelie  Torgersen           34.6          21.1        198    4400 male   2007
-## # … with 323 more rows, and abbreviated variable names ¹​flipper_length_mm,
-## #   ²​body_mass_g
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           36.7          19.3               193        3450
+##  5 Adelie  Torgersen           39.3          20.6               190        3650
+##  6 Adelie  Torgersen           38.9          17.8               181        3625
+##  7 Adelie  Torgersen           39.2          19.6               195        4675
+##  8 Adelie  Torgersen           41.1          17.6               182        3200
+##  9 Adelie  Torgersen           38.6          21.2               191        3800
+## 10 Adelie  Torgersen           34.6          21.1               198        4400
+## # ℹ 323 more rows
+## # ℹ 2 more variables: sex <fct>, year <int>
 ```
 Count and plot the number of each species of penguins with `geom_bar()`:
 
@@ -227,7 +227,7 @@ position = "fill"      -> makes a percent stacked bar plot
 
 
 
-
+![](featured.png)
 
 
 

@@ -1,0 +1,19 @@
+---
+title: Timelapse video of IHC manual score vs digital score
+author: Synnøve Yndestad
+date: '2024-01-21'
+slug: []
+categories:
+  - IHC
+tags:
+  - timelapse
+subtitle: ''
+excerpt: 'Time lapse videos are fun to make. So I made a video of me scoring IHC slides the old fashion way by examining slides in the microscope, and by using digital pathology scoring the slides using machine learning with QuPath. The digital workflow consists of identifying tumor and immune cells, and counting all positive and negative cells. There was no way I was going to do that manually. This is where QuPath came for my rescue.'
+draft: yes
+series: ~
+layout: single
+---
+
+Time lapse videos are fun to make. So I made a video of me scoring IHC slides the old fashion way by examining slides in the microscope, and by using digital pathology scoring the slides using machine learning with QuPath. The digital workflow consists of identifying tumor and immune cells, and counting all positive and negative cells. There was no way I was going to do that manually. This is where QuPath came for my rescue.
+
+{{% youtube "mXs4c0RM1Qg?si=QBHDmzZR9VBn8HVF" %}}

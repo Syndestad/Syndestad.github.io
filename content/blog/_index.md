@@ -1,28 +1,34 @@
 ---
 title: Blog
 description: |
-  This is a fully featured blog that supports categories, 
-  tags, series, and pagination.
+  Random ramblings on R, Research, breast cancer and even statistics!
 author: "Synnøve Yndestad"
-show_post_thumbnail: false
+show_post_thumbnail: true
 show_author_byline: true
 show_post_date: true
 # for listing page layout
-layout: list-sidebar # list, list-sidebar, list-grid
+layout: list # list, list-sidebar, list-grid
 
 # for list-sidebar layout
 sidebar: 
   title: 
   description: |
     
+    This collage represent some of the methods and techniques I have used in the past.
+    They are all from my lab-journals.  
+    Some of it may find their way here, but I prefer to focus on the present, or the future.  
+    
     Are you a clinical scientist, molecular biologist or similar that have all this data you want to analyze in R but don´t know how? 
 
     Don´t give up. The beginning is always the hardest.
 
-    I have been there, and on the way I made a lot of notes on "how to".
-    Here I want to transfer my various "how-to" notes for R stats into blog-posts that may be useful for other translational researchers. 
+    I have been there, and on the way I made a lot of "how to" notes.  
+    Some of these "how-to" notes becomes blog-posts.   
+    Hope you will find them useful. 
 
-    Other content may appear. 
+
+
+     
   author: "Synnøve Yndestad"
   text_link_label: 
   text_link_url: /index.xml

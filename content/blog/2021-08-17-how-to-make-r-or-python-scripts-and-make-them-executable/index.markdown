@@ -51,7 +51,8 @@ Or Download the Scripts and example FASTA files from my [GitHub](https://github.
 # Date: 15.08.2021
 # Description:
 ## This R-script will take a DNA sequence in FASTA format and
-## -Compute the length and GC content of a DNA sequence while considering both uppercase and lowercase letters.
+## -Compute the length and GC content of a DNA sequence while 
+##  considering both uppercase and lowercase letters.
 ## -Show processing time.
 ## -Print output in terminal
 ################################

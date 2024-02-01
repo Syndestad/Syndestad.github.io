@@ -1,4 +1,4 @@
-Reository for personal website hosted at [https://syndestad.netlify.app](https://syndestad.netlify.app)
+Repository for personal website hosted at [https://syndestad.netlify.app](https://syndestad.netlify.app)
 
 Generated using _Hugo Apéro_ - a personal website theme made for Hugo by [RStudio](https://rstudio.com/). 
 Based on [Blogophonic](https://github.com/formspree/blogophonic-hugo) by [Formspree](https://formspree.io).
