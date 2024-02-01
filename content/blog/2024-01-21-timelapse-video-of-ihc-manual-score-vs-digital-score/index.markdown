@@ -9,7 +9,7 @@ tags:
   - timelapse
 subtitle: ''
 excerpt: 'Time lapse videos are fun to make. So I made a video of me scoring IHC slides the old fashion way by examining slides in the microscope, and by using digital pathology scoring the slides using machine learning with QuPath. The digital workflow consists of identifying tumor and immune cells, and counting all positive and negative cells. There was no way I was going to do that manually. This is where QuPath came for my rescue.'
-draft: yes
+draft: no
 series: ~
 layout: single
 ---

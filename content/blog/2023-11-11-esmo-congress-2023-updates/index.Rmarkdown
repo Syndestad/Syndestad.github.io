@@ -11,7 +11,7 @@ categories:
 tags: []
 subtitle: ''
 excerpt: 'LOTS of new ADCs, Immunotherapy in ER+ breast cancer, some cool stuff on highly sensitive analyses for ctDNA, more cool stuff on Epigenomic liquid biopsy profiling. Intronic variants, do they have any clinical relevance, or should we keep filtering them out (hint, no we should not). Also, where does the discussion on HRD stand?'
-draft: yes
+draft: no
 series: ~
 layout: single
 ---
@@ -19,7 +19,7 @@ layout: single
 
 
 
-This year, the ESMO congress was hosted in Madrid.
+This year, the ESMO congress was hosted in Madrid. 
 It is a great place to be to get updated on latest cancer research, mostly aimed toward oncologists. 
 The oncologist participates in the hope of finding something they can use to help their patients when they get back. 
 The basic scientists, like me, participates to get an update on "what do we know", what are the possible mechanisms behind treatment resistance and what can we do in the lab when we get home to find out how to overcome them?  
