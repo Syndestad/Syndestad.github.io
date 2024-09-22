@@ -5,7 +5,8 @@ title = "I just needed the data, I wasn't supposed to be doing this."
 author = "Synnøve Yndestad"
 copyright = "" # set to override the auto generated copyright using org info and now year
 googleAnalytics = ""
-disqusShortname = ""
+disqusShortname = "https-syndestad-netlify-app"
+
 metaDataFormat = "yaml"
 footnoteReturnLinkContents = "&#8617;" # ↩
 # set deliberately low for testing choose your prefered number based on the blog layout you've chosen

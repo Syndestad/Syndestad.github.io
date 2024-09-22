@@ -5,32 +5,35 @@ date: '2024-01-13'
 slug: []
 categories: []
 tags: []
-excerpt: '1.	**Yndestad, S**., C. Engebrethsen, A. Herencia-Ropero, O. Nikolaienko, O. K. Vintermyr, R. K. Lillestol, L. Minsaas, B. Leirvaag, G. T. Iversen, B. Gilje, E. S. Blix, H. Espelid, S. Lundgren, J. Geisler, H. S. Aase, T. Aas, E. G. Gudlaugsson, A. Llop-Guevara, V. Serra, E. A. M. Janssen, P. E. Lonning, S. Knappskog and H. P. Eikesdal (2023). [**Homologous Recombination Deficiency Across Subtypes of Primary Breast Cancer**](https://pubmed.ncbi.nlm.nih.gov/38039432/) 
+excerpt: '1. **Yndestad, S.**, H. K. Haugland, D. Goplen, D. Wojcik, S. Knappskog and P. E. Lonning (2024). [**Germline variants in patients diagnosed with pediatric soft tissue sarcoma.**](https://pubmed.ncbi.nlm.nih.gov/39037077/) Acta Oncol 63: 586-591.
+
+
+2.	**Yndestad, S**., C. Engebrethsen, A. Herencia-Ropero, O. Nikolaienko, O. K. Vintermyr, R. K. Lillestol, L. Minsaas, B. Leirvaag, G. T. Iversen, B. Gilje, E. S. Blix, H. Espelid, S. Lundgren, J. Geisler, H. S. Aase, T. Aas, E. G. Gudlaugsson, A. Llop-Guevara, V. Serra, E. A. M. Janssen, P. E. Lonning, S. Knappskog and H. P. Eikesdal (2023). [**Homologous Recombination Deficiency Across Subtypes of Primary Breast Cancer**](https://pubmed.ncbi.nlm.nih.gov/38039432/) 
 JCO Precis Oncol 7: e2300338.  
 
 
-2.	Nikolaienko, O., H. P. Eikesdal, E. Ognedal, B. Gilje, S. Lundgren, E. S. Blix, H. Espelid, J. Geisler, S. Geisler, E. A. M. Janssen, **S. Yndestad**, L. Minsaas, B. Leirvaag, R. Lillestol, S. Knappskog and P. E. Lonning (2023). [**Prenatal BRCA1 epimutations contribute significantly to triple-negative breast cancer development**](https://pubmed.ncbi.nlm.nih.gov/38053165/) Genome Med 15(1): 104.  
+3.	Nikolaienko, O., H. P. Eikesdal, E. Ognedal, B. Gilje, S. Lundgren, E. S. Blix, H. Espelid, J. Geisler, S. Geisler, E. A. M. Janssen, **S. Yndestad**, L. Minsaas, B. Leirvaag, R. Lillestol, S. Knappskog and P. E. Lonning (2023). [**Prenatal BRCA1 epimutations contribute significantly to triple-negative breast cancer development**](https://pubmed.ncbi.nlm.nih.gov/38053165/) Genome Med 15(1): 104.  
 
 
-3.	Eikesdal, H. P., **S. Yndestad**, A. Elzawahry, A. Llop-Guevara, B. Gilje, E. S. Blix, H. Espelid, S. Lundgren, J. Geisler, G. Vagstad, A. Venizelos, L. Minsaas, B. Leirvaag, E. G. Gudlaugsson, O. K. Vintermyr, H. S. Aase, T. Aas, J. Balmana, V. Serra, E. A. M. Janssen, S. Knappskog and P. E. Lonning (2021). [**Olaparib monotherapy as primary treatment in unselected triple negative breast cancer**](https://pubmed.ncbi.nlm.nih.gov/33242536/) Ann Oncol 32(2): 240-249.  
+4.	Eikesdal, H. P., **S. Yndestad**, A. Elzawahry, A. Llop-Guevara, B. Gilje, E. S. Blix, H. Espelid, S. Lundgren, J. Geisler, G. Vagstad, A. Venizelos, L. Minsaas, B. Leirvaag, E. G. Gudlaugsson, O. K. Vintermyr, H. S. Aase, T. Aas, J. Balmana, V. Serra, E. A. M. Janssen, S. Knappskog and P. E. Lonning (2021). [**Olaparib monotherapy as primary treatment in unselected triple negative breast cancer**](https://pubmed.ncbi.nlm.nih.gov/33242536/) Ann Oncol 32(2): 240-249.  
 
 
-4.	**Yndestad, S.**, E. Austreid, K. O. Skaftnesmo, P. E. Lonning and H. P. Eikesdal (2018). [**Divergent Activity of the Pseudogene PTENP1 in ER-Positive and Negative Breast Cancer**](https://pubmed.ncbi.nlm.nih.gov/29021233/) Mol Cancer Res 16(1): 78-89.  
+5.	**Yndestad, S.**, E. Austreid, K. O. Skaftnesmo, P. E. Lonning and H. P. Eikesdal (2018). [**Divergent Activity of the Pseudogene PTENP1 in ER-Positive and Negative Breast Cancer**](https://pubmed.ncbi.nlm.nih.gov/29021233/) Mol Cancer Res 16(1): 78-89.  
 
 
-5.	**Yndestad, S.**, E. Austreid, I. R. Svanberg, S. Knappskog, P. E. Lonning and H. P. Eikesdal (2017). [**Activation of Akt characterizes estrogen receptor positive human breast cancers which respond to anthracyclines**](https://pubmed.ncbi.nlm.nih.gov/28476032/) Oncotarget.  
+6.	**Yndestad, S.**, E. Austreid, I. R. Svanberg, S. Knappskog, P. E. Lonning and H. P. Eikesdal (2017). [**Activation of Akt characterizes estrogen receptor positive human breast cancers which respond to anthracyclines**](https://pubmed.ncbi.nlm.nih.gov/28476032/) Oncotarget.  
 
 
-6.	**Yndestad, S.**, E. Austreid, S. Knappskog, R. Chrisanthar, P. K. Lilleng, P. E. Lonning and H. P. Eikesdal (2017). [**High PTEN gene expression is a negative prognostic marker in human primary breast cancers with preserved p53 function**](https://pubmed.ncbi.nlm.nih.gov/28213783/) Breast Cancer Res Treat.  
+7.	**Yndestad, S.**, E. Austreid, S. Knappskog, R. Chrisanthar, P. K. Lilleng, P. E. Lonning and H. P. Eikesdal (2017). [**High PTEN gene expression is a negative prognostic marker in human primary breast cancers with preserved p53 function**](https://pubmed.ncbi.nlm.nih.gov/28213783/) Breast Cancer Res Treat.  
 
 
-7.	Steinskog, E. S., S. J. Sagstad, M. Wagner, T. V. Karlsen, N. Yang, C. E. Markhus, **S. Yndestad**, H. Wiig and H. P. Eikesdal (2016). [**Impaired lymphatic function accelerates cancer growth**](https://pubmed.ncbi.nlm.nih.gov/27329584/) Oncotarget.  
+8.	Steinskog, E. S., S. J. Sagstad, M. Wagner, T. V. Karlsen, N. Yang, C. E. Markhus, **S. Yndestad**, H. Wiig and H. P. Eikesdal (2016). [**Impaired lymphatic function accelerates cancer growth**](https://pubmed.ncbi.nlm.nih.gov/27329584/) Oncotarget.  
 
 
-8.	Knappskog, S., E. O. Berge, R. Chrisanthar, S. Geisler, V. Staalesen, B. Leirvaag, **S. Yndestad, E**. de Faveri, B. O. Karlsen, D. C. Wedge, L. A. Akslen, P. K. Lilleng, E. Lokkevik, S. Lundgren, B. Ostenstad, T. Risberg, I. Mjaaland, T. Aas and P. E. Lonning (2015). [**Concomitant inactivation of the p53- and pRB- functional pathways predicts resistance to DNA damaging drugs in breast cancer in vivo**](https://pubmed.ncbi.nlm.nih.gov/26004085/) Mol Oncol.  
+9.	Knappskog, S., E. O. Berge, R. Chrisanthar, S. Geisler, V. Staalesen, B. Leirvaag, **S. Yndestad, E**. de Faveri, B. O. Karlsen, D. C. Wedge, L. A. Akslen, P. K. Lilleng, E. Lokkevik, S. Lundgren, B. Ostenstad, T. Risberg, I. Mjaaland, T. Aas and P. E. Lonning (2015). [**Concomitant inactivation of the p53- and pRB- functional pathways predicts resistance to DNA damaging drugs in breast cancer in vivo**](https://pubmed.ncbi.nlm.nih.gov/26004085/) Mol Oncol.  
 
 
-9.	**Yndestad S**, Eikesdal HP, [**PI3K-Akt-mTOR signallering og Anthracyclinresistens**](https://onkonytt.no/pi3k-akt-mtor-signalering-og-anthracyklinresistens/). Onkonytt. 2014(1).
+10.	**Yndestad S**, Eikesdal HP, [**PI3K-Akt-mTOR signallering og Anthracyclinresistens**](https://onkonytt.no/pi3k-akt-mtor-signalering-og-anthracyklinresistens/). Onkonytt. 2014(1).
 
   
 <br>    
@@ -94,25 +97,27 @@ https://bora.uib.no/bora-xmlui/handle/1956/17687
 '
 ---
 
+1. **Yndestad, S.**, H. K. Haugland, D. Goplen, D. Wojcik, S. Knappskog and P. E. Lonning (2024). [**Germline variants in patients diagnosed with pediatric soft tissue sarcoma.**](https://pubmed.ncbi.nlm.nih.gov/39037077/) Acta Oncol 63: 586-591.
 
-1.	**Yndestad, S**., C. Engebrethsen, A. Herencia-Ropero, O. Nikolaienko, O. K. Vintermyr, R. K. Lillestol, L. Minsaas, B. Leirvaag, G. T. Iversen, B. Gilje, E. S. Blix, H. Espelid, S. Lundgren, J. Geisler, H. S. Aase, T. Aas, E. G. Gudlaugsson, A. Llop-Guevara, V. Serra, E. A. M. Janssen, P. E. Lonning, S. Knappskog and H. P. Eikesdal (2023). [**Homologous Recombination Deficiency Across Subtypes of Primary Breast Cancer**](https://pubmed.ncbi.nlm.nih.gov/38039432/) 
+
+2.	**Yndestad, S.**, C. Engebrethsen, A. Herencia-Ropero, O. Nikolaienko, O. K. Vintermyr, R. K. Lillestol, L. Minsaas, B. Leirvaag, G. T. Iversen, B. Gilje, E. S. Blix, H. Espelid, S. Lundgren, J. Geisler, H. S. Aase, T. Aas, E. G. Gudlaugsson, A. Llop-Guevara, V. Serra, E. A. M. Janssen, P. E. Lonning, S. Knappskog and H. P. Eikesdal (2023). [**Homologous Recombination Deficiency Across Subtypes of Primary Breast Cancer**](https://pubmed.ncbi.nlm.nih.gov/38039432/) 
 JCO Precis Oncol 7: e2300338.  
 
-2.	Nikolaienko, O., H. P. Eikesdal, E. Ognedal, B. Gilje, S. Lundgren, E. S. Blix, H. Espelid, J. Geisler, S. Geisler, E. A. M. Janssen, **S. Yndestad**, L. Minsaas, B. Leirvaag, R. Lillestol, S. Knappskog and P. E. Lonning (2023). [**Prenatal BRCA1 epimutations contribute significantly to triple-negative breast cancer development**](https://pubmed.ncbi.nlm.nih.gov/38053165/) Genome Med 15(1): 104.  
+3.	Nikolaienko, O., H. P. Eikesdal, E. Ognedal, B. Gilje, S. Lundgren, E. S. Blix, H. Espelid, J. Geisler, S. Geisler, E. A. M. Janssen, **S. Yndestad**, L. Minsaas, B. Leirvaag, R. Lillestol, S. Knappskog and P. E. Lonning (2023). [**Prenatal BRCA1 epimutations contribute significantly to triple-negative breast cancer development**](https://pubmed.ncbi.nlm.nih.gov/38053165/) Genome Med 15(1): 104.  
 
-3.	Eikesdal, H. P., **S. Yndestad**, A. Elzawahry, A. Llop-Guevara, B. Gilje, E. S. Blix, H. Espelid, S. Lundgren, J. Geisler, G. Vagstad, A. Venizelos, L. Minsaas, B. Leirvaag, E. G. Gudlaugsson, O. K. Vintermyr, H. S. Aase, T. Aas, J. Balmana, V. Serra, E. A. M. Janssen, S. Knappskog and P. E. Lonning (2021). [**Olaparib monotherapy as primary treatment in unselected triple negative breast cancer**](https://pubmed.ncbi.nlm.nih.gov/33242536/) Ann Oncol 32(2): 240-249.  
+4.	Eikesdal, H. P., **S. Yndestad**, A. Elzawahry, A. Llop-Guevara, B. Gilje, E. S. Blix, H. Espelid, S. Lundgren, J. Geisler, G. Vagstad, A. Venizelos, L. Minsaas, B. Leirvaag, E. G. Gudlaugsson, O. K. Vintermyr, H. S. Aase, T. Aas, J. Balmana, V. Serra, E. A. M. Janssen, S. Knappskog and P. E. Lonning (2021). [**Olaparib monotherapy as primary treatment in unselected triple negative breast cancer**](https://pubmed.ncbi.nlm.nih.gov/33242536/) Ann Oncol 32(2): 240-249.  
 
-4.	**Yndestad, S.**, E. Austreid, K. O. Skaftnesmo, P. E. Lonning and H. P. Eikesdal (2018). [**Divergent Activity of the Pseudogene PTENP1 in ER-Positive and Negative Breast Cancer**](https://pubmed.ncbi.nlm.nih.gov/29021233/) Mol Cancer Res 16(1): 78-89.  
+5.	**Yndestad, S.**, E. Austreid, K. O. Skaftnesmo, P. E. Lonning and H. P. Eikesdal (2018). [**Divergent Activity of the Pseudogene PTENP1 in ER-Positive and Negative Breast Cancer**](https://pubmed.ncbi.nlm.nih.gov/29021233/) Mol Cancer Res 16(1): 78-89.  
 
-5.	**Yndestad, S.**, E. Austreid, I. R. Svanberg, S. Knappskog, P. E. Lonning and H. P. Eikesdal (2017). [**Activation of Akt characterizes estrogen receptor positive human breast cancers which respond to anthracyclines**](https://pubmed.ncbi.nlm.nih.gov/28476032/) Oncotarget.  
+6.	**Yndestad, S.**, E. Austreid, I. R. Svanberg, S. Knappskog, P. E. Lonning and H. P. Eikesdal (2017). [**Activation of Akt characterizes estrogen receptor positive human breast cancers which respond to anthracyclines**](https://pubmed.ncbi.nlm.nih.gov/28476032/) Oncotarget.  
 
-6.	**Yndestad, S.**, E. Austreid, S. Knappskog, R. Chrisanthar, P. K. Lilleng, P. E. Lonning and H. P. Eikesdal (2017). [**High PTEN gene expression is a negative prognostic marker in human primary breast cancers with preserved p53 function**](https://pubmed.ncbi.nlm.nih.gov/28213783/) Breast Cancer Res Treat.  
+7.	**Yndestad, S.**, E. Austreid, S. Knappskog, R. Chrisanthar, P. K. Lilleng, P. E. Lonning and H. P. Eikesdal (2017). [**High PTEN gene expression is a negative prognostic marker in human primary breast cancers with preserved p53 function**](https://pubmed.ncbi.nlm.nih.gov/28213783/) Breast Cancer Res Treat.  
 
-7.	Steinskog, E. S., S. J. Sagstad, M. Wagner, T. V. Karlsen, N. Yang, C. E. Markhus, **S. Yndestad**, H. Wiig and H. P. Eikesdal (2016). [**Impaired lymphatic function accelerates cancer growth**](https://pubmed.ncbi.nlm.nih.gov/27329584/) Oncotarget.  
+8.	Steinskog, E. S., S. J. Sagstad, M. Wagner, T. V. Karlsen, N. Yang, C. E. Markhus, **S. Yndestad**, H. Wiig and H. P. Eikesdal (2016). [**Impaired lymphatic function accelerates cancer growth**](https://pubmed.ncbi.nlm.nih.gov/27329584/) Oncotarget.  
 
-8.	Knappskog, S., E. O. Berge, R. Chrisanthar, S. Geisler, V. Staalesen, B. Leirvaag, **S. Yndestad, E**. de Faveri, B. O. Karlsen, D. C. Wedge, L. A. Akslen, P. K. Lilleng, E. Lokkevik, S. Lundgren, B. Ostenstad, T. Risberg, I. Mjaaland, T. Aas and P. E. Lonning (2015). [**Concomitant inactivation of the p53- and pRB- functional pathways predicts resistance to DNA damaging drugs in breast cancer in vivo**](https://pubmed.ncbi.nlm.nih.gov/26004085/) Mol Oncol.  
+9.	Knappskog, S., E. O. Berge, R. Chrisanthar, S. Geisler, V. Staalesen, B. Leirvaag, **S. Yndestad, E**. de Faveri, B. O. Karlsen, D. C. Wedge, L. A. Akslen, P. K. Lilleng, E. Lokkevik, S. Lundgren, B. Ostenstad, T. Risberg, I. Mjaaland, T. Aas and P. E. Lonning (2015). [**Concomitant inactivation of the p53- and pRB- functional pathways predicts resistance to DNA damaging drugs in breast cancer in vivo**](https://pubmed.ncbi.nlm.nih.gov/26004085/) Mol Oncol.  
 
-9.	**Yndestad S**, Eikesdal HP, [**PI3K-Akt-mTOR signallering og Anthracyclinresistens**](https://onkonytt.no/pi3k-akt-mtor-signalering-og-anthracyklinresistens/). Onkonytt. 2014(1).
+10.	**Yndestad S**, Eikesdal HP, [**PI3K-Akt-mTOR signallering og Anthracyclinresistens**](https://onkonytt.no/pi3k-akt-mtor-signalering-og-anthracyklinresistens/). Onkonytt. 2014(1).
 
   
 <br>    
